@@ -9,13 +9,13 @@ from random import randint
 from linereader import copen
 
 def bot_login():
-    logging.info("Logging in...")
+    print("Logging in...")
     r =    praw.Reddit(username = config.reddit_username,
         password = config.reddit_password,
         client_id = config.client_id,
         client_secret = config.client_secret,
         user_agent = "WannabeQuadrilingual's Brozzer Bilal Bot v0.1")
-    logging.info("Logged in")
+    print("Logged in")
     return r
 
 
@@ -84,7 +84,6 @@ def get_random_dua():
     dua = openfile.getline(randint(1,lines))
     return dua
 
-logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 r = bot_login()
 while True:
     run_bot(r)
