@@ -84,7 +84,7 @@ def get_random_dua():
     dua = openfile.getline(randint(1,lines))
     return dua
 
-# logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
+logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 r = bot_login()
 while True:
     run_bot(r)
