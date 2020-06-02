@@ -14,7 +14,7 @@ def bot_login():
         password = config.reddit_password,
         client_id = config.client_id,
         client_secret = config.client_secret,
-        user_agent = "WannabeQuadrilingual's Brozzer Bilal Bot v0.1")
+        user_agent = "WannabeQuadrilingual's BrozzerAbdullahBot v3.0")
     print("Logged in")
     return r
 
@@ -24,7 +24,7 @@ def run_bot(r):
     taqiyaList = ['taqiyya','taqqiyya','taqiya','taqqiya']
     jazakallahList = ['jazakallah','jazakillah','jazakumullah']
         
-    footer = "\n^[TheMuslimTechDiscordChannel.join()](https://discord.gg/CjyC3tX) ^|| ^[r/Sahaba](https://www.reddit.com/r/Sahaba/) ^|| ^[r/MuslimLounge](https://www.reddit.com/r/MuslimLounge/)"
+    footer = "\n^[r/MuslimDevNetwork](https://www.reddit.com/r/MuslimDevNetwork/) ^|| ^[r/Sahaba](https://www.reddit.com/r/Sahaba/) ^|| ^[r/MuslimLounge](https://www.reddit.com/r/MuslimLounge/)"
 
     comment_stream = r.subreddit('Izlam').stream.comments(pause_after=-1)
     submission_stream = r.subreddit('Izlam').stream.submissions(pause_after=-1)
