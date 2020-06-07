@@ -4,6 +4,6 @@ subreddits = 'Izlam+izlanimemes'
 
 takbirList = ['takbir','takbeer','tekbir','تكبير']
 taqiyaList = ['taqiyya','taqqiyya','taqiya','taqqiya']
-jazakallahList = ['jazakallah','jazakillah','jazakumullah']
+jazakallahList = ['jazakallah','jazakillah','jazakumullah','جزاك الله']
 
 footer = "\n^[r/MuslimDevNetwork](https://www.reddit.com/r/MuslimDevNetwork/) ^|| ^[r/Sahaba](https://www.reddit.com/r/Sahaba/) ^|| ^[r/MuslimLounge](https://www.reddit.com/r/MuslimLounge/)"
