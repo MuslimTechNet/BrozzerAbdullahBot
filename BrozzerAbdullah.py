@@ -35,10 +35,10 @@ def run_bot(r):
             if(searchObj):
                 reply_comment = getQuranVerse(searchObj)
             else:
-                if("good bot" in comment_text and comment.parent().author == r.user.me() and comment.subreddit in ['Izlam','izlanimemes']):
+                if("good bot" in comment_text and comment.parent().author == r.user.me()):
                     print ("Found good bot in https://www.reddit.com" + comment.permalink)
                     reply_comment = "Good Human. " + get_random_dua() + "\n\n"
-                if("bad bot" in comment_text and comment.parent().author == r.user.me() and comment.subreddit in ['Izlam','izlanimemes']):
+                if("bad bot" in comment_text and comment.parent().author == r.user.me()):
                     print ("Found bad bot in https://www.reddit.com" + comment.permalink)
                     reply_comment = reply_comment + "[Behave yourself!](https://i.ytimg.com/vi/oL15on_OyBA/hqdefault.jpg)\n\n"
                 if any(takbir in comment_text for takbir in constants.takbirList) and comment.subreddit in ['Izlam','izlanimemes']:
@@ -50,7 +50,7 @@ def run_bot(r):
                 if ("staff gorilla" in comment_text and comment.subreddit in ['Izlam','izlanimemes']):
                     print ("Found staff gorilla in https://www.reddit.com" + comment.permalink)
                     reply_comment = reply_comment + "[You called me?](https://imgur.com/T60vscc)\n\n"
-                if any(jazakallah in comment_text for jazakallah in constants.jazakallahList) and comment.parent().author == r.user.me() and comment.subreddit in ['Izlam','izlanimemes']:
+                if any(jazakallah in comment_text for jazakallah in constants.jazakallahList) and comment.parent().author == r.user.me():
                     print ("Found jazakallah in https://www.reddit.com" + comment.permalink)
                     reply_comment = reply_comment + "وأنتم فجزاكم الله خيرا Wa antum, fa jazakumullahu khairan\n\n"
             if reply_comment!="":
