@@ -31,7 +31,6 @@ def run_bot(r):
             comment_text = comment.body.lower()
             reply_comment = ""
             searchObj = re.search( r'-qur\'?an \b([1][0,1][0,1,2,3,4]|[1-9][0-9]?)\b:([0-9]{1,3})\b-?(\b([0-9]{1,3})\b)?', comment_text, re.I)
-
             if(searchObj):
                 reply_comment = getQuranVerse(searchObj)
             else:
@@ -62,6 +61,9 @@ def run_bot(r):
                 break
             submission_text = submission.title.lower() + "------\n" + submission.selftext.lower()
             reply_comment = ""
+            searchObj = re.search( r'-qur\'?an \b([1][0,1][0,1,2,3,4]|[1-9][0-9]?)\b:([0-9]{1,3})\b-?(\b([0-9]{1,3})\b)?', submission_text, re.I)
+            if(searchObj):
+                reply_comment = getQuranVerse(searchObj)
             if any(taqiya in submission_text for taqiya in constants.taqiyaList) and submission.subreddit in ['Izlam','izlanimemes']:
                 print("Taqiya in Post : " + submission.permalink)
                 reply_comment = "Sniff, sniff... I smell Taqiya\n\n"
