@@ -55,7 +55,6 @@ def run_bot(r):
                     reply_comment = reply_comment + "وأنتم فجزاكم الله خيرا Wa antum, fa jazakumullahu khairan\n\n"
             if reply_comment!="":
                 print ("Replying to comment : " + comment.body)
-                # print(reply_comment)
                 reply_comment = reply_comment + constants.footer
                 comment.reply(reply_comment)
         for submission in submission_stream:
@@ -74,7 +73,6 @@ def run_bot(r):
                 reply_comment = reply_comment + "[You called me?](https://imgur.com/T60vscc)\n\n"
             if reply_comment!="":
                 print ("Replying to comment : " + submission.permalink)
-                # print(reply_comment)
                 reply_comment = reply_comment + constants.footer
                 submission.reply(reply_comment)
 
