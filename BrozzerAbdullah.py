@@ -22,8 +22,8 @@ def bot_login():
 
 
 def run_bot(r):
-    comment_stream = r.subreddit(constants.subreddits).stream.comments(pause_after=-1)
-    submission_stream = r.subreddit(constants.subreddits).stream.submissions(pause_after=-1)
+    comment_stream = r.subreddit(constants.subreddits).stream.comments(pause_after=-1,skip_existing=True)
+    submission_stream = r.subreddit(constants.subreddits).stream.submissions(pause_after=-1,skip_existing=True)
     while True:
         for comment in comment_stream:
             if (comment is None):
@@ -31,10 +31,9 @@ def run_bot(r):
             comment_text = comment.body.lower()
             reply_comment = ""
             searchObj = re.finditer( r'-qur\'?an \b([1][0,1][0,1,2,3,4]|[1-9][0-9]?)\b:([0-9]{1,3})\b-?(\b([0-9]{1,3})\b)?', comment_text, re.I)
-            if(searchObj):
-                for match in searchObj:
-                    reply_comment = getQuranVerse(match,reply_comment)
-            else:
+            for match in searchObj:
+                reply_comment = getQuranVerse(match,reply_comment)
+            if (reply_comment == ""):
                 if("good bot" in comment_text and comment.parent().author == r.user.me()):
                     print ("Found good bot in https://www.reddit.com" + comment.permalink)
                     reply_comment = "Good Human. " + get_random_dua() + "\n\n"
@@ -63,18 +62,18 @@ def run_bot(r):
             submission_text = submission.title.lower() + "------\n" + submission.selftext.lower()
             reply_comment = ""
             searchObj = re.finditer( r'-qur\'?an \b([1][0,1][0,1,2,3,4]|[1-9][0-9]?)\b:([0-9]{1,3})\b-?(\b([0-9]{1,3})\b)?', submission_text, re.I)
-            if(searchObj):
-                for match in searchObj:
-                    reply_comment = getQuranVerse(match,reply_comment)
-            if any(taqiya in submission_text for taqiya in constants.taqiyaList) and submission.subreddit in ['Izlam','izlanimemes']:
-                print("Taqiya in Post : " + submission.permalink)
-                reply_comment = "Sniff, sniff... I smell Taqiya\n\n"
-            if any(takbir in submission_text for takbir in constants.takbirList) and submission.subreddit in ['Izlam','izlanimemes']:
-                print ("Found Takbir in " + submission.permalink)
-                reply_comment = reply_comment + "#الله اكبر  ALLAHU AKBAR!!!!\n\n"
-            if ("staff gorilla" in submission_text) and submission.subreddit in ['Izlam','izlanimemes']:
-                print ("Found staff gorilla in " +submission.permalink)
-                reply_comment = reply_comment + "[You called me?](https://imgur.com/T60vscc)\n\n"
+            for match in searchObj:
+                reply_comment = getQuranVerse(match,reply_comment)
+            if (reply_comment == ""):
+                if any(taqiya in submission_text for taqiya in constants.taqiyaList) and submission.subreddit in ['Izlam','izlanimemes']:
+                    print("Taqiya in Post : " + submission.permalink)
+                    reply_comment = "Sniff, sniff... I smell Taqiya\n\n"
+                if any(takbir in submission_text for takbir in constants.takbirList) and submission.subreddit in ['Izlam','izlanimemes']:
+                    print ("Found Takbir in " + submission.permalink)
+                    reply_comment = reply_comment + "#الله اكبر  ALLAHU AKBAR!!!!\n\n"
+                if ("staff gorilla" in submission_text) and submission.subreddit in ['Izlam','izlanimemes']:
+                    print ("Found staff gorilla in " +submission.permalink)
+                    reply_comment = reply_comment + "[You called me?](https://imgur.com/T60vscc)\n\n"
             if reply_comment!="":
                 print ("Replying to comment : " + submission.permalink)
                 reply_comment = reply_comment + constants.footer
