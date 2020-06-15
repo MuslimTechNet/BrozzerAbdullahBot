@@ -22,17 +22,18 @@ def bot_login():
 
 
 def run_bot(r):
-    comment_stream = r.subreddit(constants.subreddits).stream.comments(pause_after=-1,skip_existing=True)
-    submission_stream = r.subreddit(constants.subreddits).stream.submissions(pause_after=-1,skip_existing=True)
+    comment_stream = r.subreddit(constants.subreddits).stream.comments(pause_after=-1)
+    submission_stream = r.subreddit(constants.subreddits).stream.submissions(pause_after=-1)
     while True:
         for comment in comment_stream:
             if (comment is None):
                 break
             comment_text = comment.body.lower()
             reply_comment = ""
-            searchObj = re.search( r'-qur\'?an \b([1][0,1][0,1,2,3,4]|[1-9][0-9]?)\b:([0-9]{1,3})\b-?(\b([0-9]{1,3})\b)?', comment_text, re.I)
+            searchObj = re.finditer( r'-qur\'?an \b([1][0,1][0,1,2,3,4]|[1-9][0-9]?)\b:([0-9]{1,3})\b-?(\b([0-9]{1,3})\b)?', comment_text, re.I)
             if(searchObj):
-                reply_comment = getQuranVerse(searchObj)
+                for match in searchObj:
+                    reply_comment = getQuranVerse(match,reply_comment)
             else:
                 if("good bot" in comment_text and comment.parent().author == r.user.me()):
                     print ("Found good bot in https://www.reddit.com" + comment.permalink)
@@ -61,9 +62,10 @@ def run_bot(r):
                 break
             submission_text = submission.title.lower() + "------\n" + submission.selftext.lower()
             reply_comment = ""
-            searchObj = re.search( r'-qur\'?an \b([1][0,1][0,1,2,3,4]|[1-9][0-9]?)\b:([0-9]{1,3})\b-?(\b([0-9]{1,3})\b)?', submission_text, re.I)
+            searchObj = re.finditer( r'-qur\'?an \b([1][0,1][0,1,2,3,4]|[1-9][0-9]?)\b:([0-9]{1,3})\b-?(\b([0-9]{1,3})\b)?', submission_text, re.I)
             if(searchObj):
-                reply_comment = getQuranVerse(searchObj)
+                for match in searchObj:
+                    reply_comment = getQuranVerse(match,reply_comment)
             if any(taqiya in submission_text for taqiya in constants.taqiyaList) and submission.subreddit in ['Izlam','izlanimemes']:
                 print("Taqiya in Post : " + submission.permalink)
                 reply_comment = "Sniff, sniff... I smell Taqiya\n\n"
