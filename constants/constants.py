@@ -6,4 +6,4 @@ takbirList = ['takbir','takbeer','tekbir','تكبير']
 taqiyaList = ['taqiyya','taqqiyya','taqiya','taqqiya']
 jazakallahList = ['jazakallah','jazakillah','jazakumullah','جزاك الله']
 
-footer = "\n^[r/MuslimDevNetwork](https://www.reddit.com/r/MuslimDevNetwork/) ^|| ^[r/Sahaba](https://www.reddit.com/r/Sahaba/) ^|| ^[r/MuslimLounge](https://www.reddit.com/r/MuslimLounge/)"
+footer = "\n^[r/MuslimTechNet](https://www.reddit.com/r/MuslimTechNet/) ^|| ^[r/Sahaba](https://www.reddit.com/r/Sahaba/) ^|| ^[r/MuslimLounge](https://www.reddit.com/r/MuslimLounge/)"
