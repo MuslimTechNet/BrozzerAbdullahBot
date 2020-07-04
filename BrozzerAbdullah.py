@@ -7,8 +7,7 @@ import logging
 import sys
 from responseService.quranVerseResponse import getQuranVerse
 from constants import constants
-from random import randint
-from linereader import copen
+import responseService.generalResponses as responses
 
 def bot_login():
     print("Logging in...")
@@ -30,28 +29,28 @@ def run_bot(r):
                 break
             comment_text = comment.body.lower()
             reply_comment = ""
-            searchObj = re.finditer( r'-qur\'?an \b([1][0,1][0,1,2,3,4]|[1-9][0-9]?)\b:([0-9]{1,3})\b-?(\b([0-9]{1,3})\b)?', comment_text, re.I)
-            for match in searchObj:
+            quranObject = re.finditer( r'-qur\'?an \b([1][0,1][0,1,2,3,4]|[1-9][0-9]?)\b:([0-9]{1,3})\b-?(\b([0-9]{1,3})\b)?', comment_text, re.I)
+            for match in quranObject:
                 reply_comment = getQuranVerse(match,reply_comment)
             if (reply_comment == ""):
                 if("good bot" in comment_text and comment.parent().author == r.user.me()):
-                    print ("Found good bot in https://www.reddit.com" + comment.permalink)
-                    reply_comment = "Good Human. " + get_random_dua() + "\n\n"
+                    # print ("Found good bot in https://www.reddit.com" + comment.permalink)
+                    reply_comment = reply_comment + responses.goodBotResponse()
                 if("bad bot" in comment_text and comment.parent().author == r.user.me()):
-                    print ("Found bad bot in https://www.reddit.com" + comment.permalink)
-                    reply_comment = reply_comment + "[Behave yourself!](https://i.ytimg.com/vi/oL15on_OyBA/hqdefault.jpg)\n\n"
+                    # print ("Found bad bot in https://www.reddit.com" + comment.permalink)
+                    reply_comment = reply_comment + responses.badBotResponse()
                 if any(takbir in comment_text for takbir in constants.takbirList) and comment.subreddit in ['Izlam','izlanimemes']:
-                    print ("Found Takbir in https://www.reddit.com" + comment.permalink)
-                    reply_comment = reply_comment + "#الله اكبر  ALLAHU AKBAR!!!!\n\n"
+                    # print ("Found Takbir in https://www.reddit.com" + comment.permalink)
+                    reply_comment = reply_comment + responses.takbirResponse() 
                 if any(taqiya in comment_text for taqiya in constants.taqiyaList) and not comment.author == r.user.me() and comment.subreddit in ['Izlam','izlanimemes']:
-                    print ("Found Taqiya in https://www.reddit.com" + comment.permalink)
-                    reply_comment = reply_comment + "This brozzer/sizter is using taqqiya, 100% true taqqiya master\n\n"
+                    # print ("Found Taqiya in https://www.reddit.com" + comment.permalink)
+                    reply_comment = reply_comment + responses.taqiyaResponse() 
                 if ("staff gorilla" in comment_text and comment.subreddit in ['Izlam','izlanimemes']):
-                    print ("Found staff gorilla in https://www.reddit.com" + comment.permalink)
-                    reply_comment = reply_comment + "[You called me?](https://imgur.com/T60vscc)\n\n"
+                    # print ("Found staff gorilla in https://www.reddit.com" + comment.permalink)
+                    reply_comment = reply_comment + responses.staffGorillaResponse() 
                 if any(jazakallah in comment_text for jazakallah in constants.jazakallahList) and comment.parent().author == r.user.me():
-                    print ("Found jazakallah in https://www.reddit.com" + comment.permalink)
-                    reply_comment = reply_comment + "وأنتم فجزاكم الله خيرا Wa antum, fa jazakumullahu khairan\n\n"
+                    # print ("Found jazakallah in https://www.reddit.com" + comment.permalink)
+                    reply_comment = reply_comment + responses.jazakallahResponse() 
             if reply_comment!="":
                 print ("Replying to comment : " + comment.body)
                 reply_comment = reply_comment + constants.footer
@@ -61,30 +60,24 @@ def run_bot(r):
                 break
             submission_text = submission.title.lower() + "------\n" + submission.selftext.lower()
             reply_comment = ""
-            searchObj = re.finditer( r'-qur\'?an \b([1][0,1][0,1,2,3,4]|[1-9][0-9]?)\b:([0-9]{1,3})\b-?(\b([0-9]{1,3})\b)?', submission_text, re.I)
-            for match in searchObj:
+            quranObject = re.finditer( r'-qur\'?an \b([1][0,1][0,1,2,3,4]|[1-9][0-9]?)\b:([0-9]{1,3})\b-?(\b([0-9]{1,3})\b)?', submission_text, re.I)
+            for match in quranObject:
                 reply_comment = getQuranVerse(match,reply_comment)
             if (reply_comment == ""):
                 if any(taqiya in submission_text for taqiya in constants.taqiyaList) and submission.subreddit in ['Izlam','izlanimemes']:
-                    print("Taqiya in Post : " + submission.permalink)
-                    reply_comment = "Sniff, sniff... I smell Taqiya\n\n"
+                    # print("Taqiya in Post : " + submission.permalink)
+                    reply_comment = reply_comment + responses.taqiyaPostResponse() 
                 if any(takbir in submission_text for takbir in constants.takbirList) and submission.subreddit in ['Izlam','izlanimemes']:
                     print ("Found Takbir in " + submission.permalink)
-                    reply_comment = reply_comment + "#الله اكبر  ALLAHU AKBAR!!!!\n\n"
+                    reply_comment = reply_comment + responses.takbirResponse() 
                 if ("staff gorilla" in submission_text) and submission.subreddit in ['Izlam','izlanimemes']:
                     print ("Found staff gorilla in " +submission.permalink)
-                    reply_comment = reply_comment + "[You called me?](https://imgur.com/T60vscc)\n\n"
+                    reply_comment = reply_comment + responses.staffGorillaResponse() 
+            
             if reply_comment!="":
                 print ("Replying to comment : " + submission.permalink)
                 reply_comment = reply_comment + constants.footer
                 submission.reply(reply_comment)
-
-
-def get_random_dua():
-    openfile = copen("./constants/dua.txt")
-    lines = openfile.count('\n') + 1
-    dua = openfile.getline(randint(1,lines))
-    return dua
 
 r = bot_login()
 while True:
