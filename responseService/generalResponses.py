@@ -1,5 +1,6 @@
 from random import randint
 from linereader import copen
+from constants import constants
 
 # Submission Response
 def taqiyaPostResponse():
@@ -20,7 +21,8 @@ def taqiyaResponse():
     return  "This brozzer/sizter is using taqqiya, 100% true taqqiya master\n\n"
 def jazakallahResponse():
     return "وأنتم فجزاكم الله خيرا Wa antum, fa jazakumullahu khairan\n\n"
-
+def infoResponse():
+    return constants.info
 def get_random_dua():
     openfile = copen("./constants/dua.txt")
     lines = openfile.count('\n') + 1
