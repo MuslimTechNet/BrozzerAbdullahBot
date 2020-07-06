@@ -1,24 +1,9 @@
 # -*- coding: utf-8 -*-
-import praw
-import config
-import time
 import re
-import logging
-import sys
-from responseService.quranVerseResponse import getQuranVerse
-from constants import constants
-import responseService.generalResponses as responses
-
-def bot_login():
-    print("Logging in...")
-    r =    praw.Reddit(username = config.reddit_username,
-        password = config.reddit_password,
-        client_id = config.client_id,
-        client_secret = config.client_secret,
-        user_agent = "WannabeQuadrilingual's BrozzerAbdullahBot v3.0")
-    print("Logged in")
-    return r
-
+from services.quranVerseResponse import getQuranVerse
+from responseConstants import constants
+from services.login import login
+import services.generalResponses as responses
 
 def run_bot(r):
     comment_stream = r.subreddit(constants.subreddits).stream.comments(pause_after=-1,skip_existing=True)
@@ -82,6 +67,6 @@ def run_bot(r):
                 reply_comment = reply_comment + constants.footer
                 submission.reply(reply_comment)
 
-r = bot_login()
+r = login()
 while True:
     run_bot(r)

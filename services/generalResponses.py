@@ -1,6 +1,6 @@
 from random import randint
 from linereader import copen
-from constants import constants
+from responseConstants import constants
 
 # Submission Response
 def taqiyaPostResponse():

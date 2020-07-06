@@ -6,7 +6,7 @@ takbirList = ['takbir','takbeer','tekbir','تكبير']
 taqiyaList = ['taqiyya','taqqiyya','taqiya','taqqiya']
 jazakallahList = ['jazakallah','jazakillah','jazakumullah','جزاك الله']
 
-footer = "\n^[r/MuslimTechNet](https://www.reddit.com/r/MuslimTechNet/) ^|| ^[r/Sahaba](https://www.reddit.com/r/Sahaba/) ^|| -info for bot info"
+footer = "\n^(-info for commands) ^|| ^[r/MuslimTechNet](https://www.reddit.com/r/MuslimTechNet/) ^|| ^[r/Sahaba](https://www.reddit.com/r/Sahaba/)"
 
 info = """Feature List
 

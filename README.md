@@ -1,17 +1,22 @@
 # RedditBot
 Developer : u/WannabeQuadrilingual
 
-Only for Subreddit '/r/izlam'
+Feature List
 
-|No|Replies to comments containing          |                             							  |
-|--|----------------------------------------|---------------------------------------------------------|
-|1 |takbir/takbeer/tekbir/تكبير |           لله ا اكبر ALLAHU AKBAR!!!!   							  |
-|2 |bad/good/great/best/awesome/amazing bot | Similar greetings + dua     							  |
-|3 |lol*                                    | SMT                         							  |
-|4 |taqiya                                  | This brozzer is using taqiya							  |
-|5 |staff gorilla                           | (A picture of gorilla)      							  |
-|6 |Jazakallah Khair						|وأنتم فجزاكم الله خيرا Wa antum, fa jazakumullahu khairan|
+|No.|Command|Response|
+|:-|:-|:-|
+|1|`-quran 1:5, -quran 2:5-10`|Corresponding Quran Verses|
+|2|`takbir, takbeer, tekbir, تكبير`|الله اكبر  ALLAHU AKBAR!!!!|
+|3|`taqiyya, taqiya, taqqiya`|This brozzer/sizter is using taqq...|
+|4|`Staff Gorilla`|[You called me?](https://imgur.com/T60vscc)|
+|5|`jazakallah, jazakillah, جزاك الله`|Wa antum, fa jazakumullahu kh...|
+|6|`Good Bot`|Good Human + a dua |
+|7|`Bad Bot`|[Behave yourself!](https://i.ytimg.com/vi/oL15on_OyBA/hqdefault.jpg)|
+
+Feature 1,5,6 are available in subreddits - [r/islam](https://www.reddit.com/r/islam), [r/Izlam](https://www.reddit.com/r/Izlam), [r/izlanimemes](https://www.reddit.com/r/izlanimemes), [r/MuslimLounge](https://www.reddit.com/r/MuslimLounge), [r/muslimtechnet](https://www.reddit.com/r/muslimtechnet), [r/Quran](https://www.reddit.com/r/Quran), [r/Hifdh](https://www.reddit.com/r/Hifdh)
+
+Rest are available only in [r/Izlam](https://www.reddit.com/r/Izlam), [r/izlanimemes](https://www.reddit.com/r/izlanimemes)
+
+[Contact Me](https://www.reddit.com/message/compose?to=/r/MTN&subject=BrozzerAbdullahBot) for features, suggestion or bug reports.
 
 
-Credits : 
-u/pakistanisuperstar, u/NehNarwhal, u/Sapientiaeclavis, u/DarkFalconPanther, u/V0RATI0, u/karoshi97 and others for the name and idea.
