@@ -23,8 +23,9 @@ def jazakallahResponse():
     return "وأنتم فجزاكم الله خيرا Wa antum, fa jazakumullahu khairan\n\n"
 def infoResponse():
     return constants.info
+
 def get_random_dua():
-    openfile = copen("./constants/dua.txt")
+    openfile = copen("./responseConstants/dua.txt")
     lines = openfile.count('\n') + 1
     dua = openfile.getline(randint(1,lines))
     return dua

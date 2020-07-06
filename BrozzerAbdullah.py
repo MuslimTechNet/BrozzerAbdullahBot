@@ -24,16 +24,16 @@ def run_bot(r):
                 if("good bot" in comment_text and comment.parent().author == r.user.me()):
                     # print ("Found good bot in https://www.reddit.com" + comment.permalink)
                     reply_comment = reply_comment + responses.goodBotResponse()
-                if("bad bot" in comment_text and comment.parent().author == r.user.me()) and comment.subreddit in ['Izlam','izlanimemes']:
+                if("bad bot" in comment_text and comment.parent().author == r.user.me()) and comment.subreddit in ['Izlam','izlanimemes','MTN']:
                     # print ("Found bad bot in https://www.reddit.com" + comment.permalink)
                     reply_comment = reply_comment + responses.badBotResponse()
-                if any(takbir in comment_text for takbir in constants.takbirList) and comment.subreddit in ['Izlam','izlanimemes']:
+                if any(takbir in comment_text for takbir in constants.takbirList) and comment.subreddit in ['Izlam','izlanimemes','MTN']:
                     # print ("Found Takbir in https://www.reddit.com" + comment.permalink)
                     reply_comment = reply_comment + responses.takbirResponse() 
-                if any(taqiya in comment_text for taqiya in constants.taqiyaList) and comment.subreddit in ['Izlam','izlanimemes']:
+                if any(taqiya in comment_text for taqiya in constants.taqiyaList) and comment.subreddit in ['Izlam','izlanimemes','MTN']:
                     # print ("Found Taqiya in https://www.reddit.com" + comment.permalink)
                     reply_comment = reply_comment + responses.taqiyaResponse() 
-                if ("staff gorilla" in comment_text and comment.subreddit in ['Izlam','izlanimemes']):
+                if ("staff gorilla" in comment_text and comment.subreddit in ['Izlam','izlanimemes','MTN']):
                     # print ("Found staff gorilla in https://www.reddit.com" + comment.permalink)
                     reply_comment = reply_comment + responses.staffGorillaResponse() 
                 if any(jazakallah in comment_text for jazakallah in constants.jazakallahList) and comment.parent().author == r.user.me():
@@ -52,13 +52,13 @@ def run_bot(r):
             for match in quranObject:
                 reply_comment = getQuranVerse(match,reply_comment)
             if (reply_comment == ""):
-                if any(taqiya in submission_text for taqiya in constants.taqiyaList) and submission.subreddit in ['Izlam','izlanimemes']:
+                if any(taqiya in submission_text for taqiya in constants.taqiyaList) and submission.subreddit in ['Izlam','izlanimemes','MTN']:
                     # print("Taqiya in Post : " + submission.permalink)
                     reply_comment = reply_comment + responses.taqiyaPostResponse() 
-                if any(takbir in submission_text for takbir in constants.takbirList) and submission.subreddit in ['Izlam','izlanimemes']:
+                if any(takbir in submission_text for takbir in constants.takbirList) and submission.subreddit in ['Izlam','izlanimemes','MTN']:
                     # print ("Found Takbir in " + submission.permalink)
                     reply_comment = reply_comment + responses.takbirResponse() 
-                if ("staff gorilla" in submission_text) and submission.subreddit in ['Izlam','izlanimemes']:
+                if ("staff gorilla" in submission_text) and submission.subreddit in ['Izlam','izlanimemes','MTN']:
                     # print ("Found staff gorilla in " +submission.permalink)
                     reply_comment = reply_comment + responses.staffGorillaResponse() 
             
