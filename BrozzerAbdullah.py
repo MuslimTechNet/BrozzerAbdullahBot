@@ -63,21 +63,21 @@ def run_bot(comment_stream,submission_stream, author):
             reply_comment = reply_comment + constants.footer
             submission.reply(reply_comment)
 
-# if __name__ == "__main__":
-#     from services.login import login
-#     r = login()
-#     while True:
-#         comment_stream = r.subreddit(constants.subreddits).stream.comments(pause_after=-1,skip_existing=True)
-#         submission_stream = r.subreddit(constants.subreddits).stream.submissions(pause_after=-1,skip_existing=True)
-#         author = r.user.me()
-#         run_bot(comment_stream,submission_stream, author)
-
 if __name__ == "__main__":
-    from responseConstants import localTesting
+    from services.login import login
+    r = login()
     while True:
-        comment_stream = [None] * 1
-        comment_stream[0] = localTesting.Comment()
-        comment_stream[0].body = input('Comment : ')
-        submission_stream = [None] * 1
-        # submission_stream = input("Submission : ")
-        run_bot(comment_stream,submission_stream,'BrozzerAbdullahBot')
+        comment_stream = r.subreddit(constants.subreddits).stream.comments(pause_after=-1,skip_existing=True)
+        submission_stream = r.subreddit(constants.subreddits).stream.submissions(pause_after=-1,skip_existing=True)
+        author = r.user.me()
+        run_bot(comment_stream,submission_stream, author)
+
+# if __name__ == "__main__":
+#     from responseConstants import localTesting
+#     while True:
+#         comment_stream = [None] * 1
+#         comment_stream[0] = localTesting.Comment()
+#         comment_stream[0].body = input('Comment : ')
+#         submission_stream = [None] * 1
+#         # submission_stream = input("Submission : ")
+#         run_bot(comment_stream,submission_stream,'BrozzerAbdullahBot')
