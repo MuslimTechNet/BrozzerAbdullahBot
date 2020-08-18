@@ -39,37 +39,43 @@ def run_bot(comment_stream,submission_stream, author):
             print ("Replying to comment : " + comment.body)
             reply_comment = reply_comment + constants.footer
             comment.reply(reply_comment)
-    for submission in submission_stream:
-        if(submission is None):
-            break
-        submission_text = submission.title.lower() + "------\n" + submission.selftext.lower()
-        reply_comment = ""
-        quranObject = re.finditer( r'-qur\'?an \b([1][0,1][0,1,2,3,4]|[1-9][0-9]?)\b:([0-9]{1,3})\b-?(\b([0-9]{1,3})\b)?', submission_text, re.I)
-        for match in quranObject:
-            reply_comment = getQuranVerse(match,reply_comment)
-        if (reply_comment == ""):
-            if any(taqiya in submission_text for taqiya in constants.taqiyaList) and submission.subreddit in ['Izlam','izlanimemes','MTN']:
-                # print("Taqiya in Post : " + submission.permalink)
-                reply_comment = reply_comment + responses.taqiyaPostResponse() 
-            if any(takbir in submission_text for takbir in constants.takbirList) and submission.subreddit in ['Izlam','izlanimemes','MTN']:
-                # print ("Found Takbir in " + submission.permalink)
-                reply_comment = reply_comment + responses.takbirResponse() 
-            if ("staff gorilla" in submission_text) and submission.subreddit in ['Izlam','izlanimemes','MTN']:
-                # print ("Found staff gorilla in " +submission.permalink)
-                reply_comment = reply_comment + responses.staffGorillaResponse() 
-        
-        if reply_comment!="":
-            print ("Replying to comment : " + submission.submission_text)
-            reply_comment = reply_comment + constants.footer
-            submission.reply(reply_comment)
+    try:
+        for submission in submission_stream:
+            if(submission is None):
+                break
+            submission_text = submission.title.lower() + "------\n" + submission.selftext.lower()
+            reply_comment = ""
+            quranObject = re.finditer( r'-qur\'?an \b([1][0,1][0,1,2,3,4]|[1-9][0-9]?)\b:([0-9]{1,3})\b-?(\b([0-9]{1,3})\b)?', submission_text, re.I)
+            for match in quranObject:
+                reply_comment = getQuranVerse(match,reply_comment)
+            if (reply_comment == ""):
+                if any(taqiya in submission_text for taqiya in constants.taqiyaList) and submission.subreddit in ['Izlam','izlanimemes','MTN']:
+                    # print("Taqiya in Post : " + submission.permalink)
+                    reply_comment = reply_comment + responses.taqiyaPostResponse() 
+                if any(takbir in submission_text for takbir in constants.takbirList) and submission.subreddit in ['Izlam','izlanimemes','MTN']:
+                    # print ("Found Takbir in " + submission.permalink)
+                    reply_comment = reply_comment + responses.takbirResponse() 
+                if ("staff gorilla" in submission_text) and submission.subreddit in ['Izlam','izlanimemes','MTN']:
+                    # print ("Found staff gorilla in " +submission.permalink)
+                    reply_comment = reply_comment + responses.staffGorillaResponse() 
+            
+            if reply_comment!="":
+                print ("Replying to comment : " + submission_text)
+                reply_comment = reply_comment + constants.footer
+                submission.reply(reply_comment)
+    except Exception as inst:
+        print(type(inst))
+        print(inst)
+        pass
+    
 
 if __name__ == "__main__":
     from services.login import login
     r = login()
+    comment_stream = r.subreddit(constants.subreddits).stream.comments(pause_after=-1,skip_existing=True)
+    submission_stream = r.subreddit(constants.subreddits).stream.submissions(pause_after=-1,skip_existing=True)
+    author = r.user.me()
     while True:
-        comment_stream = r.subreddit(constants.subreddits).stream.comments(pause_after=-1,skip_existing=True)
-        submission_stream = r.subreddit(constants.subreddits).stream.submissions(pause_after=-1,skip_existing=True)
-        author = r.user.me()
         run_bot(comment_stream,submission_stream, author)
 
 # if __name__ == "__main__":
