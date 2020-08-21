@@ -3,6 +3,8 @@ import re
 from services.quranVerseResponse import getQuranVerse
 from responseConstants import constants
 import services.generalResponses as responses
+from dotenv import load_dotenv
+load_dotenv()
 
 def run_bot(comment_stream,submission_stream, author):
     for comment in comment_stream:

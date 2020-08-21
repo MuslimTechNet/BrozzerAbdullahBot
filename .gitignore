@@ -6,3 +6,4 @@
 .credentials
 .vscode
 alfi.code*
+.env
