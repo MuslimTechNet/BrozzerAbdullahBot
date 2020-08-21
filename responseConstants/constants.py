@@ -1,6 +1,6 @@
 #Add subreddits subredditList with a + sign in a single string literal
 #Eg = subredditList = 'Izlam+islam+MuslimLounge' 
-subreddits = 'islam+Izlam+izlanimemes+MuslimLounge+MuslimDevNetwork+Quran+MTN'
+subreddits = 'islam+Izlam+izlanimemes+MuslimLounge+MuslimTechNet+Quran+MTN+Hifdh'
 
 takbirList = ['takbir','takbeer','tekbir','تكبير']
 taqiyaList = ['taqiyya','taqqiyya','taqiya','taqqiya']
