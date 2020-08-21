@@ -1,2 +1,3 @@
 praw
 linereader
+python-dotenv
