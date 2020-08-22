@@ -84,21 +84,21 @@ def run_bot(comment_stream,submission_stream, author):
 ######## And Uncomment The Main Class Present At The End ########
 #################################################################
 
-# if __name__ == "__main__":    
-#     from services.login import login
-#     r = login()
-#     comment_stream = r.subreddit(constants.subreddits).stream.comments(pause_after=-1,skip_existing=True)
-#     submission_stream = r.subreddit(constants.subreddits).stream.submissions(pause_after=-1,skip_existing=True)
-#     author = r.user.me()
-#     while True:
-#         run_bot(comment_stream,submission_stream, author)
-
-if __name__ == "__main__":
-    from responseConstants import localTesting
+if __name__ == "__main__":    
+    from services.login import login
+    r = login()
+    comment_stream = r.subreddit(constants.subreddits).stream.comments(pause_after=-1,skip_existing=True)
+    submission_stream = r.subreddit(constants.subreddits).stream.submissions(pause_after=-1,skip_existing=True)
+    author = r.user.me()
     while True:
-        comment_stream = [None] * 1
-        comment_stream[0] = localTesting.Comment()
-        comment_stream[0].body = input('Comment : ')
-        submission_stream = [None] * 1
-        # submission_stream = input("Submission : ")
-        run_bot(comment_stream,submission_stream,'BrozzerAbdullahBot')
+        run_bot(comment_stream,submission_stream, author)
+
+# if __name__ == "__main__":
+#     from responseConstants import localTesting
+#     while True:
+#         comment_stream = [None] * 1
+#         comment_stream[0] = localTesting.Comment()
+#         comment_stream[0].body = input('Comment : ')
+#         submission_stream = [None] * 1
+#         # submission_stream = input("Submission : ")
+#         run_bot(comment_stream,submission_stream,'BrozzerAbdullahBot')
