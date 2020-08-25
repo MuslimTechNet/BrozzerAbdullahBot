@@ -13,7 +13,7 @@ def run_bot(comment_stream,submission_stream, author):
             reply_comment = ""
             
             ########  Matching Quran Command Pattern and returning the result  ########
-            quranObject = re.finditer( r'-qur\'?an \b([1][0,1][0,1,2,3,4]|[1-9][0-9]?)\b:([0-9]{1,3})\b-?(\b([0-9]{1,3})\b)?', comment_text, re.I) #Matches pattern
+            quranObject = re.finditer( r'-qur\'?an \b([1][0,1][0-9]|[1-9][0-9]?)\b:([0-9]{1,3})\b-?(\b([0-9]{1,3})\b)?', comment_text, re.I) #Matches pattern
             for match in quranObject:
                 reply_comment = getQuranVerse(match,reply_comment) #Returns the output
 
