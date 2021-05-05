@@ -19,6 +19,7 @@ Rest are available only in [r/Izlam](https://www.reddit.com/r/Izlam), [r/izlanim
 
 [Contact Me](https://www.reddit.com/message/compose?to=/r/MTN&subject=BrozzerAbdullahBot) for features, suggestion or bug reports.
 
+u/pakistanisuperstar, u/NehNarwhal, u/Sapientiaeclavis, u/DarkFalconPanther, u/V0RATI0, u/karoshi97
 
 # Steps To Setup
 1) Download and install Python 3 (Bot is tested on Python 3.8.2)
