@@ -1,12 +1,12 @@
 #Add subreddits subredditList with a + sign in a single string literal
 #Eg = subredditList = 'Izlam+islam+MuslimLounge' 
-subreddits = 'islam+Izlam+izlanimemes+MuslimLounge+muslimtechnet+Quran+MTN+Hifdh'
+subreddits = 'islam+Izlam+izlanimemes+MuslimLounge+muslimtechnet+Quran+MTN+Hifdh+MuslumanTurk'
 
 takbirList = ['takbir','takbeer','tekbir','تكبير']
 taqiyaList = ['taqiyya','taqqiyya','taqiya','taqqiya']
 jazakallahList = ['jazakallah','jazakillah','jazakumullah','جزاك الله']
 
-footer = "\n^(-info for commands) ^|| ^[r/MuslimTechNet](https://www.reddit.com/r/MuslimTechNet/) ^|| ^[r/Sahaba](https://www.reddit.com/r/Sahaba/)"
+footer = "\n^(-info for commands)"
 
 info = """Feature List
 
@@ -23,8 +23,6 @@ info = """Feature List
 Feature 1,5,6 are available in subreddits - [r/islam](https://www.reddit.com/r/islam), [r/Izlam](https://www.reddit.com/r/Izlam), [r/izlanimemes](https://www.reddit.com/r/izlanimemes), [r/MuslimLounge](https://www.reddit.com/r/MuslimLounge), [r/muslimtechnet](https://www.reddit.com/r/muslimtechnet), [r/Quran](https://www.reddit.com/r/Quran), [r/Hifdh](https://www.reddit.com/r/Hifdh)
 
 Rest are available only in [r/Izlam](https://www.reddit.com/r/Izlam), [r/izlanimemes](https://www.reddit.com/r/izlanimemes)
-
-[Contact Me](https://www.reddit.com/message/compose?to=/r/MTN&subject=BrozzerAbdullahBot) for features, suggestion or bug reports.
 
 
 """
